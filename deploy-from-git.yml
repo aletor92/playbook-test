@@ -5,6 +5,16 @@
     - debug:
         msg: "repo url: {{ repo_url }} dest_folder: {{ dest_folder }}"
 
+    - name: remove old files from temp
+      file:
+        path: /tmp/testGit
+        state: absent
+
+    - name: remove old files from temp
+      file:
+        path: "{{ dest_folder }}"
+        state: absent
+
     - name: git checkout
       git:
         repo: "{{ repo_url }}"
@@ -12,5 +22,5 @@
 
     - name: copy module
       synchronize:
-        src: /tmp
+        src: /tmp/testGit/*
         dest: "{{ dest_folder }}"
