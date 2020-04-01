@@ -9,7 +9,6 @@
       git:
         repo: "{{ repo_url }}"
         dest: /tmp
-        delegate_to: localhost
 
     - name: copy module
       synchronize:
