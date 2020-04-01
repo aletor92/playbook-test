@@ -7,11 +7,6 @@
 
     - name: remove old files from temp
       file:
-        path: /tmp/testGit
-        state: absent
-
-    - name: remove old files from temp
-      file:
         path: "{{ dest_folder }}"
         state: absent
 
@@ -23,9 +18,9 @@
     - name: git checkout
       git:
         repo: "{{ repo_url }}"
-        dest: /tmp/testGit
-
-    - name: copy module
-      synchronize:
-        src: /tmp/testGit/*
         dest: "{{ dest_folder }}"
+      register: gitResult
+
+    - debug:
+        msg: "GIT Results: {{gitResult}}"
+
