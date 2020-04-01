@@ -8,7 +8,7 @@
     - name: git checkout
       git:
         repo: "{{ repo_url }}"
-        dest: /tmp
+        dest: /tmp/testGit
 
     - name: copy module
       synchronize:
