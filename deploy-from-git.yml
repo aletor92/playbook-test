@@ -1,14 +1,16 @@
 - name: Deploy from GIT
-  hosts: remote-hosts
+  hosts: all
+  gather_facts: true
   tasks:
     - debug:
-      msg: 
-      - "repo url: {{ repo_url }}" 
-      - "dest_folder: {{ dest_folder }}"
+        msg: "repo url: {{ repo_url }} dest_folder: {{ dest_folder }}"
+
     - name: git checkout
-      repo: "{{ repo_url }}"
-      dest: /tmp
-      delegate_to: localhost
+      git:
+        repo: "{{ repo_url }}"
+        dest: /tmp
+        delegate_to: localhost
+
     - name: copy module
       synchronize:
         src: /tmp
