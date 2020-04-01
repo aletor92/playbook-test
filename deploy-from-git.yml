@@ -1,0 +1,11 @@
+- name: Deploy from GIT
+  hosts: remote-hosts
+  tasks:
+    - name: git checkout
+      repo: "{{ repo_url }}"
+      dest: /tmp
+      delegate_to: localhost
+    - name: copy module
+      synchronize:
+        src: /tmp
+        dest: {{ dest_folder }}
