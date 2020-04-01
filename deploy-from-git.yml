@@ -15,6 +15,11 @@
         path: "{{ dest_folder }}"
         state: absent
 
+    - name: Creates directory
+      file:
+        path: "{{ dest_folder }}"
+        state: directory
+
     - name: git checkout
       git:
         repo: "{{ repo_url }}"
