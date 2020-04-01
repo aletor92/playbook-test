@@ -3,8 +3,8 @@
   tasks:
     - debug:
       msg: 
-      - "repo url: {{ repo_url }} 
-      - "dest_folder: {{ dest_folder }}
+      - "repo url: {{ repo_url }}" 
+      - "dest_folder: {{ dest_folder }}"
     - name: git checkout
       repo: "{{ repo_url }}"
       dest: /tmp
