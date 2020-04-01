@@ -1,5 +1,8 @@
----
-- hosts: all
+- name: Hello World Sample
+  hosts: all
   gather_facts: false
   tasks:
-  - ping:
+    - ping:
+    - name: Print Message
+      debug:
+        msg: "Tasks completed"
