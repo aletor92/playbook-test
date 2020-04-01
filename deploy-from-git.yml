@@ -1,6 +1,10 @@
 - name: Deploy from GIT
   hosts: remote-hosts
   tasks:
+    - debug:
+      msg: 
+      - "repo url: {{ repo_url }} 
+      - "dest_folder: {{ dest_folder }}
     - name: git checkout
       repo: "{{ repo_url }}"
       dest: /tmp
@@ -8,4 +12,4 @@
     - name: copy module
       synchronize:
         src: /tmp
-        dest: {{ dest_folder }}
+        dest: "{{ dest_folder }}"
