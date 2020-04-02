@@ -5,15 +5,15 @@
       gcp_project: "{{ GCP_PROJECT }}"
       gcp_cred_kind: serviceaccount
       gcp_cred_file: "{{ GCE_CREDENTIALS_FILE_PATH }}"
-      zone: "us-central1-a"
-      region: "us-central1"
+      zone: "europe-west3-a"
+      region: "europe-west3"
 
   tasks:
    - name: create a disk
      gcp_compute_disk:
          name: 'disk-instance'
          size_gb: 20
-         source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
+         source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1804-lts'
          zone: "{{ zone }}"
          project: "{{ gcp_project }}"
          auth_kind: "{{ gcp_cred_kind }}"
@@ -49,7 +49,7 @@
    - name: create a instance
      gcp_compute_instance:
          state: present
-         name: test-vm-ansible
+         name: "{{ instance_name }}"
          machine_type: n1-standard-1
          disks:
            - auto_delete: true
