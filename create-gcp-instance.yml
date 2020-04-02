@@ -2,9 +2,9 @@
   hosts: localhost
   gather_facts: no
   vars:
-    #   gcp_project: my-project
-    #   gcp_cred_kind: serviceaccount
-    #   gcp_cred_file: /home/my_account.json
+      gcp_project: "{{ GCP_PROJECT }}"
+      gcp_cred_kind: serviceaccount
+      gcp_cred_file: "{{ GCE_CREDENTIALS_FILE_PATH }}"
       zone: "us-central1-a"
       region: "us-central1"
 
